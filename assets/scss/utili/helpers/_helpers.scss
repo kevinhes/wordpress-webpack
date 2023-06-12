@@ -1,0 +1,137 @@
+$max: 10;
+
+@for $i from 1 through $max {
+    .letter-#{$i} {
+        letter-spacing: ($i) * 1px;
+    }
+}
+
+@for $i from 1 through 20 {
+    .z-index-#{$i} {
+        z-index: ($i) * 100;
+    }
+}
+
+@for $i from 1 through $max {
+    .opacity-#{$i} {
+        opacity: ($i) * 0.1;
+    }
+}
+
+@for $i from 1 through $max {
+    .fw-#{$i} {
+        font-weight: ($i) * 100;
+    }
+}
+
+.z-index-basic {
+    z-index: 1;
+}
+
+.letter-min {
+    letter-spacing: 0.2px;
+}
+
+.object-cover {
+    object-fit: cover;
+}
+
+.text-indent-2 {
+    text-indent: 2em;
+}
+
+.ellipsis{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.mul-ellipsis{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; // 行數
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.mul-sm-ellipsis{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; // 行數
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    @include media-breakpoint-up(md) {
+        overflow: unset;
+        display: unset;
+        -webkit-line-clamp: unset;
+        -webkit-box-orient: unset;
+        white-space: unset;
+    }
+}
+
+.box-shadow-sm {
+    box-shadow: 0px 4px 5px 0px #0000000D;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.letter-0 {
+    letter-spacing: 0px;
+}
+
+@include media-breakpoint-up(md) {
+    .letter-md-1 {
+        letter-spacing: 1px;
+    }
+}
+
+// 垂直文字
+.write-vertical {
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
+    @include media-breakpoint-down(md) {
+        -webkit-writing-mode: unset;
+        writing-mode: unset;
+    }
+}
+
+.bg-setting {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  &--contain {
+    background-size: contain;
+  }
+  &--top {
+    background-position: top;
+  }
+}
+
+.el-extend {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 100%;
+  }
+}
+
+.align-super {
+  vertical-align: super;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.h-fit {
+  height: fit-content;
+}
+
+.contact-shadow {
+  box-shadow: 0px 5px 10px 0px #99753E0D;
+}

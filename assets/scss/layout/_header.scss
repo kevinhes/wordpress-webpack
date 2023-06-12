@@ -1,0 +1,46 @@
+// header 總設定
+.site-header {
+  // 標題連結
+  &__title-link {
+    display: block;
+    width: 137px;
+    height: 40px;
+    text-indent: 101%;
+    white-space: nowrap;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+  }
+
+  // home 
+  &--home {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 400;
+    @include media-breakpoint-down(md) {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      top: 0px;
+    }
+  }
+
+  &--active {
+    background-color: rgba($dark, 0.9);
+  }
+}
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $secondary3;
+  z-index: 3000;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  box-shadow: 0px 5px 10px 0px #99753E0D;
+}

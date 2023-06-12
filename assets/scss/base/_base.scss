@@ -1,0 +1,45 @@
+p {
+  margin-bottom: 0;
+}
+
+ul {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+a {
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+  color: $gray4;
+  svg path {
+    stroke: $gray4;
+    transition: all .3s ease-in-out;
+  }
+}
+
+a:hover {
+  text-decoration: none;
+  color: $secondary;
+  svg path {
+    stroke: $secondary;
+  }
+}
+
+a:visited{
+  // color: $primary;
+}
+
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+a:focus {
+  outline: none;
+}
+
+.main-about, .main-home {
+  overflow: hidden;
+  // overflow-y: scroll;
+}

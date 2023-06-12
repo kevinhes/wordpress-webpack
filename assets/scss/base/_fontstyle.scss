@@ -1,0 +1,104 @@
+// 全站設定
+body, .text-normal {
+  font-family: 'Noto Sans TC', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 1px;
+}
+
+// 清除 bootstrap 的樣式
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  margin-bottom: 0;
+}
+
+h1, .h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 36px;
+  line-height: 46px;
+  letter-spacing: 3px;
+  font-weight: 300;
+}
+
+h2, .h2 {
+  font-size: 30px;
+  line-height: 40px;
+  letter-spacing: 2px;
+  font-weight: 300;
+  font-family: 'Noto Serif TC', serif;
+}
+
+h3, .h3 {
+  font-size: 24px;
+  line-height: 34px;
+  letter-spacing: 1px;
+  font-weight: 300;
+  font-family: 'Noto Serif TC', serif;
+}
+
+h4, .h4 {
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 1px;
+  font-weight: 300;
+  font-family: 'Noto Serif TC', serif;
+}
+
+
+.text-small {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.text-smallest {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 1px
+}
+
+.en-h1 {
+  font-family: 'Cormorant', serif;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.en-h2 {
+  font-family: 'Cormorant', serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+
+}
+
+.en-h3 {
+  font-family: 'Cormorant', serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 700;
+}
+
+.text-num {
+  font-size: 40px;
+  line-height: 1;
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 300;
+}
+
+// .placeholder-secondary {
+//   &:placeholder {
+//     color: $secondary;
+//   }
+// }
+
+textarea::placeholder {
+  color: $secondary; /* 設定顏色為灰色 */
+}
+
+.letter-12 {
+  letter-spacing: 12px;
+}

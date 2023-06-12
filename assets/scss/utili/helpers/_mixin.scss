@@ -1,0 +1,20 @@
+@mixin bgImage-layout($size, $positionX, $positionY, $repeat) {
+  background-size: $size;
+  background-position: $positionX $positionY;
+  background-repeat: $repeat;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin pseudo-border-bottom($left, $right, $bottom, $color, $height) {
+  content: '';
+  position: absolute;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+  background: $color;
+  height: $height;
+}

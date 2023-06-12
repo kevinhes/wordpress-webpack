@@ -1,0 +1,27 @@
+@import './vendor/bootstrap';
+@import '../../node_modules/swiper/swiper-bundle.css';
+@import '../../node_modules/aos/dist/aos.css';
+
+// base
+@import './base/base';
+@import './base/fontstyle';
+
+//mixin
+@import './utili/helpers/mixin';
+
+//components
+
+
+//layout
+@import './layout/layout';
+@import './layout/header';
+@import './layout/footer';
+@import './layout/post';
+
+//page
+@import './page/about';
+@import './page/index';
+@import './page/404';
+
+// helpers
+@import './utili/helpers/helpers';
