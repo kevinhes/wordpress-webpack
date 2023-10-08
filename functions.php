@@ -181,3 +181,19 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// make menu arry
+function build_menu_array($menu_items, $parent = 0) {
+  $branch = [];
+
+  foreach ($menu_items as $item) {
+    if ($item->menu_item_parent == $parent) {
+      $children = build_menu_array($menu_items, $item->ID);
+      if ($children) {
+          $item->children = $children;
+      }
+      $branch[$item->ID] = $item;
+    }
+  }
+
+  return $branch;
+}
