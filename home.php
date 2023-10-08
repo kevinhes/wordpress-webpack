@@ -1,0 +1,3 @@
+<?php 
+/* template name: home */
+?>
