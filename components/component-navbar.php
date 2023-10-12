@@ -5,7 +5,7 @@
 
 <nav id="site-navigation" class="header-nav">
   <!-- 第一層選單 -->
-  <ul class="list-unstyled header-navbar header-navbar--page">
+  <ul class="list-unstyled d-flex header-navbar header-navbar--page">
     <?php foreach ($menu_tree as $menu_item) : ?>
       <li class="nav-item nav-item-fl">
         <?php if ($menu_item->children) : ?>

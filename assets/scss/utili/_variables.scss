@@ -299,14 +299,14 @@ $cyans: (
 
 // scss-docs-start theme-color-variables
 $primary:       #D62025;//$blue !default;
-$primary-dark:   #36393C;
+$primary-dark:  #36393C;
 $secondary:     #CFAE8E;//$gray-600 !default;
 $success:       #D62025;//$green !default;
 $info:          $cyan !default;
 $warning:       #D7383B;//$yellow !default;
 $danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-900 !default;
+$light:         white;//$gray-100 !default;
+$dark:          black;//$gray-900 !default;
 $gray2:         #F8F8F8;
 $gray3:         #EBEBEB;
 $gray4:         #CACACA;
@@ -550,7 +550,7 @@ $container-max-widths: (
   sm: 335px,
   md: 712px,
   lg: 960px,
-  xl: 1240px,
+  xl: 1260px,
   // xxl: 1320px
 ) !default;
 // scss-docs-end container-max-widths

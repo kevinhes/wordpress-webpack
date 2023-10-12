@@ -1,3 +1,12 @@
+// header
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+}
+
 // logo
 .logo {
   display: block;
@@ -13,4 +22,3 @@
   width: 40px;
   height: 40px;
 }
-

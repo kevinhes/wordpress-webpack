@@ -1,0 +1,21 @@
+.tile-list {
+  gap: 2px;
+  .tile-block {
+    width: 60px;
+    height: 60px;
+    display: block;
+  }
+}
+.tile-color {
+  width: 190px;
+  height: 190px;
+  border-radius: 5px;
+}
+
+.cirlce-list {
+  .circle-block {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+  }
+}

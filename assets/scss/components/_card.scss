@@ -1,0 +1,56 @@
+.card-img {
+  width: 610px;
+  height: 343px;
+}
+
+.card-content {
+  width: 485px;
+}
+
+.card-link {
+  svg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all .3s ease-in-out;
+    rect {
+      transition: all .3s ease-in-out;
+    }
+    path {
+      transition: all .3s ease-in-out;
+    }
+  }
+  &:hover {
+    svg {
+      box-shadow: 0px 0px 40px 0px #0000001A;
+      rect {
+        fill: $light;
+      }
+      path {
+        fill:$secondary;
+      }
+    }
+  }
+}
+
+.card-with-overlay {
+  position: relative;
+  &:hover {
+    .card-overlay {
+      opacity: 1;
+    }
+  }
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    background-color: rgba($dark, .35);
+    z-index: 1;
+    backdrop-filter: blur(1px);
+    border-radius: 5px;
+  }
+}

@@ -1,38 +1,175 @@
 <?php
 // wordpress api
 function my_enqueue() {
-	wp_localize_script( 'monthly-script', 'ajax_link', array(
+	wp_localize_script( 'color-script', 'ajax_link', array(
+		'ajax_url' => admin_url( 'admin-ajax.php' ),
+	) );
+  wp_localize_script( 'case-script', 'ajax_link', array(
 		'ajax_url' => admin_url( 'admin-ajax.php' ),
 	) );
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueue' );
 
 // ajax
-add_action('wp_ajax_get_acf_data','get_acf_data'); 
-add_action('wp_ajax_nopriv_get_acf_data','get_acf_data');
+add_action('wp_ajax_get_post_arr','get_post_arr'); 
+add_action('wp_ajax_nopriv_get_post_arr','get_post_arr');
 
-function get_acf_data(){
+function get_post_arr(){
 
 	// 接收前端傳來的資料
-	$post_id = $_POST['post_id'];
-  $acf_slug = $_POST['slug'];
-  $title = $_POST['title'];
+	$post_type = $_POST['post_type'];
+  $posts_per_page = $_POST['post_num'];
+  $order = $_POST['post_order'];
+
+  // 組文章陣列
+  $args = array(
+    'post_type' => $post_type,
+    'posts_per_page' => $post_num,
+    'post_status' => 'publish',
+    'order' => $post_order, // 降序排序
+  );
+
+  // 資料初始化
+  $post_arr = array();
 
 	// 跟後台要資料
-  $postDatas = [];
-  $post_id_num = intval($post_id);
-  $acf_data = get_field( $acf_slug, $post_id_num );
-	// 資料重組
-	$array_result = [
-    'acf_data' => $acf_data
-  ];
+  $query = new WP_Query($args);
+
+  if ($query->have_posts()) {
+    while ($query->have_posts()) {
+      $query->the_post();
+      $title = get_the_title();
+      $thumbnail_url = get_the_post_thumbnail_url();
+      $link = get_permalink();
+      $excerpt = get_the_excerpt();
+      $fields = get_fields();
+
+      // Create a new array to store the post data
+      $current_post = array(
+          'id' => get_the_ID(),
+          'date' => get_the_date(),
+          'content' => get_the_content(),
+          'title' => $title,
+          'thumbnail_url' => $thumbnail_url,
+          'link' => $link,
+          'excerpt' => $excerpt,
+      );
+
+        // If there are ACF fields, add them to the current post array
+        if ($fields) {
+            foreach ($fields as $field_name => $value) {
+                $current_post[$field_name] = $value;
+            }
+        }
+
+        // Add the current post array to the main post array
+        $post_arr[] = $current_post;
+    }
+  }
+  wp_reset_postdata();
 	
 	// 資料送出
-	wp_send_json($array_result);
+	wp_send_json($post_arr);
 	wp_die();
 };
 
-// get product data
-add_action('wp_ajax_get_product_data','get_product_data'); 
-add_action('wp_ajax_nopriv_get_product_data','get_product_data');
+add_action('wp_ajax_get_post_arr_with_cat_and_page','get_post_arr_with_cat_and_page'); 
+add_action('wp_ajax_nopriv_get_post_arr_with_cat_and_page','get_post_arr_with_cat_and_page');
+
+function get_post_arr_with_cat_and_page(){
+
+	// 接收前端傳來的資料
+	$post_type = $_POST['post_type'];
+  $posts_per_page = $_POST['post_num'];
+  $order = $_POST['post_order'];
+  $paged = (isset($_POST['paged']) && $_POST['paged']) ? $_POST['paged'] : 1; // default to page 1
+  $taxonomy = $_POST['taxonomy'];
+  $cat = $_POST['cat'];
+
+  // 組文章陣列
+  $args = array(
+    'post_type' => $post_type,
+    'posts_per_page' => $post_num,
+    'post_status' => 'publish',
+    'order' => $post_order, // 降序排序
+    'paged' => $paged,
+    'tax_query' => array(
+      array(
+        'taxonomy' => $taxonomy,
+        'field' => 'slug',
+        'terms' => $cat,
+      ),
+    ),
+  );
+
+  // 資料初始化
+  $post_arr = array();
+  $post_arr['post_data'] = array();
+
+
+	// 跟後台要資料
+  $query = new WP_Query($args);
+
+  if ($query->have_posts()) {
+    while ($query->have_posts()) {
+      $query->the_post();
+      $title = get_the_title();
+      $thumbnail_url = get_the_post_thumbnail_url();
+      $link = get_permalink();
+      $excerpt = get_the_excerpt();
+      $fields = get_fields();
+
+      // Create a new array to store the post data
+      $current_post = array(
+          'id' => get_the_ID(),
+          'date' => get_the_date(),
+          'content' => get_the_content(),
+          'title' => $title,
+          'thumbnail_url' => $thumbnail_url,
+          'link' => $link,
+          'excerpt' => $excerpt,
+      );
+
+        // If there are ACF fields, add them to the current post array
+        if ($fields) {
+            foreach ($fields as $field_name => $value) {
+                $current_post[$field_name] = $value;
+            }
+        }
+
+        // Add the current post array to the main post array
+        $post_arr['post_data'][] = $current_post;  // 加入到陣列中
+
+            // 分頁資訊
+        $pagination = array(
+          'total_pages' => $query->max_num_pages,
+          'current_page' => $paged,
+          'next_page' => ($paged < $query->max_num_pages) ? $paged + 1 : null,
+          'prev_page' => ($paged > 1) ? $paged - 1 : null
+        );
+
+        // 分類資訊
+        // $taxonomy_info = array();
+        // if(!empty($taxonomy_term) && !empty($taxonomy_name)){
+        //     $term_obj = get_term_by('slug', $taxonomy_term, $taxonomy_name);
+        //     $taxonomy_info = array(
+        //         'taxonomy_name' => $taxonomy_name,
+        //         'term_id' => $term_obj->term_id,
+        //         'term_name' => $term_obj->name,
+        //         'term_slug' => $term_obj->slug,
+        //         'term_description' => $term_obj->description
+        //     );
+        // }
+
+        // 加入分頁和分類資訊到主要陣列
+        $post_arr['pagination'] = $pagination;
+        // $post_arr['taxonomy_info'] = $taxonomy_info;
+    }
+  }
+  wp_reset_postdata();
+	
+	// 資料送出
+	wp_send_json($post_arr);
+	wp_die();
+};
 

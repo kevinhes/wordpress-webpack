@@ -172,7 +172,12 @@ require get_template_directory() . '/inc/acf-option.php';
 /**
  * Ajax.
  */
-// require get_template_directory() . '/inc/ajax.php';
+require get_template_directory() . '/inc/ajax.php';
+
+/**
+ * breadcrumb.
+ */
+require get_template_directory() . '/inc/breadcrumbs.php';
 
 /**
  * Load Jetpack compatibility file.

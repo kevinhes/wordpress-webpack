@@ -4,6 +4,10 @@ const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );// eslint-disa
 module.exports = { // eslint-disable-line
 	entry: {
 		main: './assets/js/main.js',
+    color: './assets/js/archive/color.js',
+    case: './assets/js/archive/case.js',
+    product: './assets/js/single/product.js',
+    singlecase: './assets/js/single/singlecase.js',
 	},
 	output: {
 		filename: '[name].js',

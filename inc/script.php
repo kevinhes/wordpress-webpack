@@ -6,8 +6,27 @@ function design_hu_webpack_scripts() {
 
 	wp_enqueue_script( 'design_hu_webpack-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	if ( is_archive() ) {
+    $page_info = get_queried_object();
+    $page_taxonomy = $page_info -> taxonomy;
+    switch ( $page_taxonomy ) {
+      case 'tax_case':
+        wp_enqueue_script( 'case-script', get_template_directory_uri() . '/dist/case.js', array(), _S_VERSION, true );
+        break;
+      case 'tax_mineral_color':
+        wp_enqueue_script( 'color-script', get_template_directory_uri() . '/dist/color.js', array(), _S_VERSION, true );
+        break;
+    }
+  } elseif ( is_single() ) {
+    $post_type = get_post_type();
+    switch ( $post_type ) {
+      case 'type_products':
+        wp_enqueue_script( 'product-script', get_template_directory_uri() . '/dist/product.js', array(), _S_VERSION, true );
+        break;
+      case 'type_case':
+        wp_enqueue_script( 'single-case-script', get_template_directory_uri() . '/dist/singlecase.js', array(), _S_VERSION, true );
+        break;
+    }
+  }
 }
 add_action( 'wp_enqueue_scripts', 'design_hu_webpack_scripts' );

@@ -8,6 +8,7 @@ ul {
 }
 
 a {
+  display: block;
   text-decoration: none;
   transition: all .3s ease-in-out;
   svg path {
@@ -18,9 +19,6 @@ a {
 a:hover {
   text-decoration: none;
   color: $secondary;
-  svg path {
-    stroke: $secondary;
-  }
 }
 
 a:visited{
@@ -34,10 +32,29 @@ button {
 }
 
 a:focus {
-  outline: none;
+  outline: none; 
 }
 
 .main-about, .main-home {
   overflow: hidden;
   // overflow-y: scroll;
+}
+
+.editor-content {
+  ul {
+    padding-left: 0;
+    margin-right: 0;
+    list-style: none;
+    margin-bottom: 20px;
+    li {
+      margin-bottom: 5px;
+    }
+  }
+  p {
+    margin-bottom: 20px;
+    line-height: 28px;
+  }
+  :last-child {
+    margin-bottom: 0;
+  }
 }

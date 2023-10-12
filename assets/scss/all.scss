@@ -10,6 +10,15 @@
 @import './utili/helpers/mixin';
 
 //components
+@import './components/banner';
+@import './components/tab';
+@import './components/form';
+@import './components/list';
+@import './components/popover';
+@import './components/button';
+@import './components/card';
+@import './components/breadcrumbs';
+@import './components/swiper';
 
 
 //layout
@@ -25,3 +34,4 @@
 
 // helpers
 @import './utili/helpers/helpers';
+@import './utili/helpers/utili';

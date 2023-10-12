@@ -1,7 +1,7 @@
 $mobile-space-sizes: (
   xxs: 15px,
   xs: 40px,
-  s: 30px,
+  s: 25px,
   m: 40px,
   l: 50px,
   xl: 60px,
@@ -21,12 +21,16 @@ $mobile-space-sizes: (
   .inner-sm-bottom-#{$size} {
     padding-bottom: $space;
   };
+  .inner-sm-y-#{$size} {
+    padding-bottom: $space;
+    padding-top: $space;
+  };
 };
 
 $space-sizes: (
   xxs:30px,
   xs: 40px,
-  s: 60px,
+  s: 50px,
   m: 80px,
   l: 100px,
   xl: 120px,
@@ -52,6 +56,12 @@ $space-sizes: (
   .inner-bottom-#{$size} {
     @include media-breakpoint-up(lg) {
       padding-bottom: $space;
+    }
+  };
+  .inner-y-#{$size} {
+    @include media-breakpoint-up(lg) {
+      padding-bottom: $space;
+      padding-top: $space;
     }
   };
 };

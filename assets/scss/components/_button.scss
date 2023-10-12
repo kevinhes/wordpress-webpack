@@ -1,0 +1,28 @@
+.btn {
+  padding: 4px 12px;
+  border-radius: 5px;
+}
+
+.btn-lg {
+  padding: 12px 32px;
+}
+
+.btn-y-center {
+  display: flex;
+  align-items: center;
+}
+
+.btn-secondary {
+  background: $secondary;
+  color: $light;
+}
+
+.btn-outline-secondary {
+  color: $secondary;
+  border: 1px solid $secondary;
+}
+
+.btn-gray3 {
+  background: $gray3;
+  color: $dark;
+}

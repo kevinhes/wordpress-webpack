@@ -1,0 +1,51 @@
+.tab-item-cat {
+  width: 16.6666666667%;
+}
+
+.tab-item-cat-color {
+  margin-right: 4px;
+}
+
+.tab-link {
+  display: block;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  text-align: center;
+  color: $gray5;
+  &:visited {
+    color: $gray5;
+  }
+}
+
+.tab-link-cat {
+  position: relative;
+  &:hover {
+    color: $primary;
+  }
+  &.active {
+    color: $primary;
+    &::after {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      height: 2px;
+      content: '';
+      background: $primary;
+      left: 0;
+    }
+  }
+}
+
+.tab-link-cat-color {
+  position: relative;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-align: center;
+  &:hover {
+    color: $dark;
+  }
+  &.active {
+    color: $light;
+    background: $dark;
+  }
+}
