@@ -5,16 +5,18 @@
 
 <div class="site-branding">
   <?php if( is_home() || is_front_page() ) : ?>
-    <h1>
+    <div class="d-flex align-items-center">
       <a
         href="<?php echo esc_url( home_url( '/' ) ); ?>"
         rel="home"
-        class="logo logo-header"
+        class="logo logo-header me-3"
         style="background-image: url(<?php echo $logo[0] ?>)"
       >
-        <?php bloginfo( 'name' ); ?>
       </a>
-    </h1>
+      <h1 class="h4 text-light">
+        <?php bloginfo( 'name' ); ?>
+      </h1>
+    </div>
   <?php else : ?>
     <p>
       <a

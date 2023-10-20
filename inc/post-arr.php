@@ -42,6 +42,7 @@ function output_post($post_type, $post_num, $post_order = 'DESC') {
 
     // Make sure to reset post data after the while loop
     wp_reset_postdata();
+    wp_reset_query();
 
     return $post_arr;
   }

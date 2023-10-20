@@ -50,6 +50,15 @@ function design_hu_webpack_setup() {
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'design_hu_webpack' ),
+			'menu-2' => esc_html__( 'home', 'design_hu_webpack' ),
+			'menu-3' => esc_html__( 'product', 'design_hu_webpack' ),
+			'menu-4' => esc_html__( 'color', 'design_hu_webpack' ),
+			'menu-5' => esc_html__( 'case', 'design_hu_webpack' ),
+			'menu-6' => esc_html__( 'knowledge', 'design_hu_webpack' ),
+			'menu-7' => esc_html__( 'video', 'design_hu_webpack' ),
+			'menu-8' => esc_html__( 'about', 'design_hu_webpack' ),
+			'menu-9' => esc_html__( 'shopping', 'design_hu_webpack' ),
+			'menu-10' => esc_html__( 'contact', 'design_hu_webpack' ),
 		)
 	);
 
@@ -167,7 +176,7 @@ require get_template_directory() . '/inc/acf-option.php';
 /**
  * Page redirect.
  */
-// require get_template_directory() . '/inc/page-redirect.php';
+require get_template_directory() . '/inc/page-redirect.php';
 
 /**
  * Ajax.
@@ -178,6 +187,11 @@ require get_template_directory() . '/inc/ajax.php';
  * breadcrumb.
  */
 require get_template_directory() . '/inc/breadcrumbs.php';
+
+/**
+ * post num.
+ */
+require get_template_directory() . '/inc/postnum.php';
 
 /**
  * Load Jetpack compatibility file.

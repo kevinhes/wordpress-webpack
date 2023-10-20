@@ -20,6 +20,23 @@ $post_type = get_post_type();
         case 'type_case':
           get_template_part( 'page-template/single/case' );
           break;
+        case 'type_coating_knowled':
+          $taxonomies = get_object_taxonomies($post_type);
+          $terms = get_the_terms($post->ID, $taxonomies[0]);
+          foreach( $terms as $term ) {
+            if ( $term -> slug === 'electronic-catalog' ) {
+              get_template_part( 'page-template/single/electronic-catalog' );
+            } elseif ( $term -> slug === 'diy-area' ) {
+              get_template_part( 'page-template/single/diy-area' );
+            }
+          }
+          break;
+        case 'type_video':
+          get_template_part( 'page-template/single/video' );
+          break;
+        case 'type_news':
+          get_template_part( 'page-template/single/singlenews' );
+          break;
         default:
           while ( have_posts() ) :
             the_post();

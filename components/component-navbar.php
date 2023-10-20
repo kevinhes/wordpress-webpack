@@ -1,21 +1,25 @@
 <?php 
   $menu_items = wp_get_nav_menu_items('primary-menu');
   $menu_tree = build_menu_array($menu_items);
+  $page_info = get_queried_object();
+  $current_url = home_url(add_query_arg(array(), $wp->request)) . '/';
 ?>
 
 <nav id="site-navigation" class="header-nav">
   <!-- 第一層選單 -->
-  <ul class="list-unstyled d-flex header-navbar header-navbar--page">
+  <ul class="list-unstyled d-flex column-gap-3 header-navbar header-navbar--page">
+    <?php $active_class = ''; ?>
     <?php foreach ($menu_tree as $menu_item) : ?>
+      <?php $active_class = ($menu_item->url == $current_url) ? 'active' : ''; ?>
       <li class="nav-item nav-item-fl">
         <?php if ($menu_item->children) : ?>
-          <a href="<?php echo $menu_item->url; ?>" class="header-navbar__nav-link">
+          <a href="<?php echo $menu_item->url; ?>" class="nav-link">
             <span>
               <?php echo $menu_item->title; ?>
             </span>
           </a>
         <?php else : ?>
-          <a href="<?php echo $menu_item->url; ?>" class="header-navbar__nav-link"><?php echo $menu_item->title; ?></a>
+          <a href="<?php echo $menu_item->url; ?>" class="nav-link <?php echo $active_class ?>"><?php echo $menu_item->title; ?></a>
         <?php endif ?>
         <?php if ($menu_item->children) : ?>
           <!-- 第二層選單 -->

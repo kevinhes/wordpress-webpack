@@ -1,0 +1,11 @@
+.nav-link {
+  display: block;
+  padding: 12px 8px;
+  color: $dark;
+}
+
+.header-navbar-light {
+  .nav-link {
+    color: $light;
+  }
+}

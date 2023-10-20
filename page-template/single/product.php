@@ -1,7 +1,10 @@
 <?php
 $product_gallery = get_field('product_gallery');
 $product_main_content = get_field('product_main_content');
+$feature_des = get_field('feature_des');
 $title = get_the_title();
+$product_feature_list = get_field('product_feature_list');
+$table = get_field('table');
 ?>
 <!-- banner -->
 <?php get_template_part('components/component-dropdown-banner') ?>
@@ -40,7 +43,7 @@ $title = get_the_title();
           <path d="M3.75 10.4375V21.5C3.75 21.6989 3.82902 21.8897 3.96967 22.0303C4.11032 22.171 4.30109 22.25 4.5 22.25H9V15.875C9 15.5766 9.11853 15.2905 9.3295 15.0795C9.54048 14.8685 9.82663 14.75 10.125 14.75H13.875C14.1734 14.75 14.4595 14.8685 14.6705 15.0795C14.8815 15.2905 15 15.5766 15 15.875V22.25H19.5C19.6989 22.25 19.8897 22.171 20.0303 22.0303C20.171 21.8897 20.25 21.6989 20.25 21.5V10.4375" stroke="#CFAE8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M22.5 12.4999L12.5105 2.93741C12.2761 2.68991 11.7281 2.6871 11.4895 2.93741L1.5 12.4999M18.75 8.89054V3.49991H16.5V6.73429" stroke="#CFAE8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span>
+        <span class="h4 mb-0">
           <?php echo $product_main_content['series_name'] ?>
         </span>
       </div>
@@ -56,7 +59,7 @@ $title = get_the_title();
         <?php endforeach ?>
       </ul>
       <p class="mb-5 py-3 px-3 bg-gray2 rounded-5px text-center text-primary">
-        #<?php echo $post['title'] ?>開放線上購買囉！<a class="d-inline text-decoration-underline" href="<?php echo $product_main_content['shopping_site']['url'] ?>"><?php echo $product_main_content['shopping_site']['title'] ?></a>
+        #<?php echo $post -> post_title ?>開放線上購買囉！<a class="d-inline text-decoration-underline" href="<?php echo $product_main_content['shopping_site']['url'] ?>"><?php echo $product_main_content['shopping_site']['title'] ?></a>
       </p>
       <div class="row">
         <div class="col">
@@ -84,4 +87,92 @@ $title = get_the_title();
     </div>
   </div>
   <h3 class="pb-3 border-bottom border-gray6 text-center layout-bottom-s">特性說明</h3>
+  <div class="layout-bottom-s layout-sm-bottom-s">
+    <?php foreach( $feature_des['feature_list'] as $list ) : ?>
+    <p><?php echo $list['title'] ?></p>
+    <ul class="mb-6">
+      <?php foreach( $list['detail'] as $feature ) : ?>
+        <li class="fs-7">
+          <span class="fs-6">
+            <?php echo $feature['feature'] ?>
+          </span>
+        </li>
+      <?php endforeach ?>
+    </ul>
+    <?php endforeach ?>
+    <p class="text-primary">
+      <?php echo $feature_des['caption'] ?>
+    </p>
+  </div>
+  <div class="row layout-bottom-l">
+    <?php foreach($product_feature_list as $item) : ?>
+      <div class="col-lg-2">
+        <div class="rounded-5px bg-secondary p-3 d-flex flex-column justify-content-center align-items-center bg-opacity-20">
+          <div class="mb-5">
+            <?php echo $item['icon'] ?>
+          </div>
+          <h4 class="mb-0"><?php echo $item['title'] ?></h4>
+        </div>
+      </div>
+    <?php endforeach ?>
+  </div>
+  <h3 class="pb-3 border-bottom border-gray6 text-center layout-bottom-s">優勢比較</h3>
+  <div class="inner-bottom-l inner-sm-bottom-l border-bottom border-gray4 layout-bottom-l layout-sm-bottom-l">
+    <?php foreach($table as $key => $table_item) : ?>
+      <?php if( $key === 0 ) : ?>
+      <div class="row mb-1x5">
+        <div class="offset-lg-2 col-lg-2"><?php echo $table_item['thead'] ?></div>
+        <div class="col-lg-3">
+          <div class="bg-primary bg-opacity-10 rounded-5px py-3 text-center px-3">
+            <?php echo $table_item['keim'] ?>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="bg-gray6 bg-opacity-10 rounded-5px text-center py-3 px-3">
+            <?php echo $table_item['normal'] ?>
+          </div>
+        </div>
+      </div>
+      <?php else : ?>
+      <div class="row mb-1x5">
+        <div class="offset-lg-2 col-lg-2">
+          <div class="rounded-5px bg-gray2 p-3">
+            <?php echo $table_item['thead'] ?>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="bg-primary bg-opacity-10 rounded-5px py-3 text-center px-3">
+            <?php echo $table_item['keim'] ?>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="bg-gray6 bg-opacity-10 rounded-5px text-center py-3 px-3">
+            <?php echo $table_item['normal'] ?>
+          </div>
+        </div>
+      </div>
+      <?php endif ?>
+    <?php endforeach ?>
+  </div>
+  <div class="row layout-bottom-s layout-bottom-s">
+    <?php $products_arr = output_post('type_products', -1); ?>
+    <?php foreach($products_arr as $product) : ?>
+      <div class="col-lg-6 mb-10">
+        <a class="position-relative rounded-5px overflow-hidden" href="<?php echo $product['link'] ?>">
+          <div class="position-absolute w-100 h-100 top-0 start-0">
+            <img src="<?php echo $product['sm_banner_img']['url'] ?>" alt="" class="w-100 h-100 object-cover">
+          </div>
+          <div class="blur position-relative z-index-1 p-8 d-flex justify-content-between align-items-center">
+            <h2 class="text-dark"><?php echo $product['title'] ?></h2>
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+                <rect x="40.5" width="40" height="40" rx="20" transform="rotate(90 40.5 0)" fill="#CFAE8E"/>
+                <path d="M21.9313 28.3945C21.8909 28.3541 21.8588 28.3062 21.837 28.2534C21.8151 28.2006 21.8038 28.1441 21.8038 28.0869C21.8038 28.0298 21.8151 27.9732 21.837 27.9204C21.8588 27.8676 21.8909 27.8197 21.9313 27.7793L29.0149 20.6957H10.9348C10.8195 20.6957 10.7089 20.6499 10.6273 20.5684C10.5458 20.4869 10.5 20.3763 10.5 20.261C10.5 20.1457 10.5458 20.0351 10.6273 19.9535C10.7089 19.872 10.8195 19.8262 10.9348 19.8262H29.0149L21.9313 12.7426C21.8909 12.7022 21.8589 12.6543 21.837 12.6015C21.8152 12.5487 21.8039 12.4921 21.8039 12.435C21.8039 12.3779 21.8152 12.3213 21.837 12.2685C21.8589 12.2158 21.8909 12.1678 21.9313 12.1274C21.9717 12.087 22.0197 12.055 22.0725 12.0331C22.1252 12.0113 22.1818 12 22.2389 12C22.2961 12 22.3526 12.0113 22.4054 12.0331C22.4582 12.055 22.5061 12.087 22.5465 12.1274L30.3725 19.9534C30.4129 19.9937 30.445 20.0417 30.4669 20.0945C30.4887 20.1473 30.5 20.2038 30.5 20.261C30.5 20.3181 30.4887 20.3747 30.4669 20.4275C30.445 20.4802 30.4129 20.5282 30.3725 20.5686L22.5465 28.3945C22.5062 28.4349 22.4582 28.467 22.4054 28.4889C22.3526 28.5108 22.2961 28.522 22.2389 28.522C22.1818 28.522 22.1252 28.5108 22.0724 28.4889C22.0197 28.467 21.9717 28.4349 21.9313 28.3945Z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    <?php endforeach ?>
+  </div>
 </div>

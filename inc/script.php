@@ -16,6 +16,10 @@ function design_hu_webpack_scripts() {
       case 'tax_mineral_color':
         wp_enqueue_script( 'color-script', get_template_directory_uri() . '/dist/color.js', array(), _S_VERSION, true );
         break;
+      case 'tax_certification':
+      case 'tax_news':
+        wp_enqueue_script( 'dropdownbanner-script', get_template_directory_uri() . '/dist/dropdownbanner.js', array(), _S_VERSION, true );
+        break;
     }
   } elseif ( is_single() ) {
     $post_type = get_post_type();
@@ -26,7 +30,27 @@ function design_hu_webpack_scripts() {
       case 'type_case':
         wp_enqueue_script( 'single-case-script', get_template_directory_uri() . '/dist/singlecase.js', array(), _S_VERSION, true );
         break;
+      case 'type_coating_knowled':
+      case 'type_video':
+      case 'type_news':
+        wp_enqueue_script( 'coating-knowled-script', get_template_directory_uri() . '/dist/electronicCatalog.js', array(), _S_VERSION, true );
+        break;
     }
+  } elseif ( is_page() ) {
+    $page = get_queried_object();
+    $page_slug = $page -> post_name;
+    switch($page_slug) {
+      case 'about':
+      case 'keim-stories':
+      case 'env-protect':
+      case 'site-map':
+        wp_enqueue_script( 'about-script', get_template_directory_uri() . '/dist/about.js', array(), _S_VERSION, true );
+        break;
+    }
+  }
+  
+  if ( is_front_page() ) {
+    wp_enqueue_script( 'home-script', get_template_directory_uri() . '/dist/home.js', array(), _S_VERSION, true );
   }
 }
 add_action( 'wp_enqueue_scripts', 'design_hu_webpack_scripts' );

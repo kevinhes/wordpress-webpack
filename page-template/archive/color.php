@@ -1,6 +1,7 @@
 <?php
 $search_icon = wp_get_attachment_url(83, 'full');
 wp_localize_script( 'color-script', 'search_icon', $search_icon );
+require get_template_directory() . '/inc/post-arr.php';
 ?>
 
 <!-- banner -->
@@ -34,12 +35,32 @@ wp_localize_script( 'color-script', 'search_icon', $search_icon );
   <!-- tab -->
 
   <!-- color list -->
-  <ul class="tile-list list-unstyled d-flex">
+  <ul class="tile-list list-unstyled d-flex flex-wrap">
     <!-- 由 js 渲染 -->
   </ul>
   <!-- color list -->
 </div>
 
 <div class="container inner-y-l inner-sm-y-l">
-  
+  <div class="row">
+    <?php $products_arr = output_post('type_products', -1); ?>
+      <?php foreach($products_arr as $product) : ?>
+        <div class="col-lg-6 mb-10">
+          <a class="position-relative rounded-5px overflow-hidden" href="<?php echo $product['link'] ?>">
+            <div class="position-absolute w-100 h-100 top-0 start-0">
+              <img src="<?php echo $product['sm_banner_img']['url'] ?>" alt="" class="w-100 h-100 object-cover">
+            </div>
+            <div class="blur position-relative z-index-1 p-8 d-flex justify-content-between align-items-center">
+              <h2 class="text-dark"><?php echo $product['title'] ?></h2>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+                  <rect x="40.5" width="40" height="40" rx="20" transform="rotate(90 40.5 0)" fill="#CFAE8E"/>
+                  <path d="M21.9313 28.3945C21.8909 28.3541 21.8588 28.3062 21.837 28.2534C21.8151 28.2006 21.8038 28.1441 21.8038 28.0869C21.8038 28.0298 21.8151 27.9732 21.837 27.9204C21.8588 27.8676 21.8909 27.8197 21.9313 27.7793L29.0149 20.6957H10.9348C10.8195 20.6957 10.7089 20.6499 10.6273 20.5684C10.5458 20.4869 10.5 20.3763 10.5 20.261C10.5 20.1457 10.5458 20.0351 10.6273 19.9535C10.7089 19.872 10.8195 19.8262 10.9348 19.8262H29.0149L21.9313 12.7426C21.8909 12.7022 21.8589 12.6543 21.837 12.6015C21.8152 12.5487 21.8039 12.4921 21.8039 12.435C21.8039 12.3779 21.8152 12.3213 21.837 12.2685C21.8589 12.2158 21.8909 12.1678 21.9313 12.1274C21.9717 12.087 22.0197 12.055 22.0725 12.0331C22.1252 12.0113 22.1818 12 22.2389 12C22.2961 12 22.3526 12.0113 22.4054 12.0331C22.4582 12.055 22.5061 12.087 22.5465 12.1274L30.3725 19.9534C30.4129 19.9937 30.445 20.0417 30.4669 20.0945C30.4887 20.1473 30.5 20.2038 30.5 20.261C30.5 20.3181 30.4887 20.3747 30.4669 20.4275C30.445 20.4802 30.4129 20.5282 30.3725 20.5686L22.5465 28.3945C22.5062 28.4349 22.4582 28.467 22.4054 28.4889C22.3526 28.5108 22.2961 28.522 22.2389 28.522C22.1818 28.522 22.1252 28.5108 22.0724 28.4889C22.0197 28.467 21.9717 28.4349 21.9313 28.3945Z" fill="white"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+      <?php endforeach ?>
+  </div>
 </div>

@@ -43,6 +43,7 @@ $utilities: map-merge(
       values: (
         0: 0,
         10: .1,
+        20: .20,
         25: .25,
         50: .5,
         75: .75,
@@ -208,6 +209,7 @@ $utilities: map-merge(
         35: 35%,
         43: 43%,
         50: 50%,
+        55: 55%,
         64: 64%,
         65: 65%,
         70: 70%,
@@ -240,6 +242,7 @@ $utilities: map-merge(
       values: (
         25: 25%,
         50: 50%,
+        55: 55%,
         75: 75%,
         100: 100%,
         auto: auto
@@ -692,6 +695,7 @@ $utilities: map-merge(
       class: bg-opacity,
       values: (
         10: .1,
+        20: .2,
         25: .25,
         50: .5,
         75: .75,

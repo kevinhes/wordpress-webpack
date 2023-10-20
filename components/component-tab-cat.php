@@ -13,7 +13,7 @@
   }
 ?>
 
-<div class="bg-light">
+<div class="bg-light cat-tab">
   <div class="container">
     <ul class="cat-tab list-unstyled d-flex justify-content-between">
       <?php foreach( $terms as $term ) : ?>

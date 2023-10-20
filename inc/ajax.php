@@ -20,14 +20,34 @@ function get_post_arr(){
 	$post_type = $_POST['post_type'];
   $posts_per_page = $_POST['post_num'];
   $order = $_POST['post_order'];
+  $taxonomy = isset($_POST['taxonomy']) && !empty($_POST['taxonomy']) ? $_POST['taxonomy'] : 'default_taxonomy_value';
+  $cat = isset($_POST['cat']) && !empty($_POST['cat']) ? $_POST['cat'] : 'default_cat_value';
+  // $taxonomy = $_POST['taxonomy'];
+  // $cat = $_POST['cat'];
 
   // 組文章陣列
-  $args = array(
-    'post_type' => $post_type,
-    'posts_per_page' => $post_num,
-    'post_status' => 'publish',
-    'order' => $post_order, // 降序排序
-  );
+  if (isset($_POST['taxonomy']) && !empty($_POST['taxonomy'])) {
+    $args = array(
+      'post_type' => $post_type,
+      'posts_per_page' => $posts_per_page,
+      'post_status' => 'publish',
+      'order' => $post_order,
+      'tax_query' => array(
+        array(
+          'taxonomy' => $taxonomy,
+          'field' => 'slug',
+          'terms' => $cat,
+        ),
+      ),
+    );
+  } else {
+    $args = array(
+      'post_type' => $post_type,
+      'posts_per_page' => $post_num,
+      'post_status' => 'publish',
+      'order' => $post_order,
+    );
+  }
 
   // 資料初始化
   $post_arr = array();

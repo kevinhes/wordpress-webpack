@@ -8,6 +8,10 @@ module.exports = { // eslint-disable-line
     case: './assets/js/archive/case.js',
     product: './assets/js/single/product.js',
     singlecase: './assets/js/single/singlecase.js',
+    electronicCatalog: './assets/js/single/electronicCatalog.js',
+    about: './assets/js/page/about.js',
+    dropdownbanner: './assets/js/components/dropdownbanner.js',
+    home: './assets/js/page/home.js',
 	},
 	output: {
 		filename: '[name].js',

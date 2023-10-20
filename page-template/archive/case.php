@@ -14,7 +14,7 @@ $page_info = get_queried_object();
 
 <section class="inner-y-l inner-sm-y-l bg-gray2" data-slug="<?php echo $page_info -> slug ?>">
   <div class="container">
-    <ul class="case-list row list-unstyled mb-x5">
+    <ul class="case-list row row-gap-5 list-unstyled mb-x5">
       <!-- 由 js 渲染 -->
     </ul>
   </div>

@@ -14,7 +14,7 @@
       <?php $title = $key === 0 ? '全部' : $term -> name ?>
       <?php $active = $term -> term_id === $page_info -> term_id ? 'active' : '' ?>
       <li class="tab-item tab-item-cat-color">
-        <a href="#" class="tab-link tab-link-cat-color <?php echo $active ?>">
+        <a href="#" class="tab-link tab-link-cat-color <?php echo $active ?>" data-cat="<?php echo $term -> slug ?>" >
           <?php echo $title ?>
         </a>
       </li>

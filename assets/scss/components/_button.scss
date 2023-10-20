@@ -15,6 +15,18 @@
 .btn-secondary {
   background: $secondary;
   color: $light;
+  border: 1px solid $secondary;
+  &:hover {
+    background: transparent;
+    color: $secondary;
+    svg path {
+      stroke: $secondary;
+    }
+  }
+}
+
+.btn-secondary20 {
+  background: rgba($secondary, .2);
 }
 
 .btn-outline-secondary {
@@ -25,4 +37,13 @@
 .btn-gray3 {
   background: $gray3;
   color: $dark;
+}
+
+.btn-outline-light {
+  color: $light;
+  border: 1px solid $light;
+  &:hover {
+    background: $light;
+    color: $dark;
+  }
 }

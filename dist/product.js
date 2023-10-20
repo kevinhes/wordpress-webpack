@@ -15,7 +15,7 @@
   \************************************************/
 /***/ (() => {
 
-eval("var pageSelect = document.querySelector('.form-select');\npageSelect.addEventListener('change', function (e) {\n  var url = e.target.value;\n  window.location = url;\n});\n\n//# sourceURL=webpack://underscores/./assets/js/components/dropdownbanner.js?");
+eval("var fullURL = window.location.href;\nvar pageSelect = document.querySelector('.form-select');\n\n// 根據當前網址選中相應的選項\nArray.from(pageSelect.options).forEach(function (option) {\n  if (option.value === fullURL) {\n    option.selected = true;\n  }\n});\npageSelect.addEventListener('change', function (e) {\n  var url = e.target.value;\n  window.location = url;\n});\n\n//# sourceURL=webpack://underscores/./assets/js/components/dropdownbanner.js?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("var pageSelect = document.querySelector('.form-select');\npageSelect.addEv
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_dropdownbanner_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/dropdownbanner.js */ \"./assets/js/components/dropdownbanner.js\");\n/* harmony import */ var _components_dropdownbanner_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_dropdownbanner_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/bundle */ \"./node_modules/swiper/swiper-bundle.esm.js\");\n\n\nconsole.log(swiper_bundle__WEBPACK_IMPORTED_MODULE_1__.Swiper);\nvar productThumbSwiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_1__.Swiper('.productThumbSwiper', {\n  slidesPerView: 4,\n  spaceBetween: 10,\n  watchSlidesVisibility: true\n});\nvar productMainSwiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_1__.Swiper('.productMainSwiper', {\n  thumbs: {\n    swiper: productThumbSwiper\n  }\n});\n\n//# sourceURL=webpack://underscores/./assets/js/single/product.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_dropdownbanner_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/dropdownbanner.js */ \"./assets/js/components/dropdownbanner.js\");\n/* harmony import */ var _components_dropdownbanner_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_dropdownbanner_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/bundle */ \"./node_modules/swiper/swiper-bundle.esm.js\");\n\n\nvar productThumbSwiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_1__.Swiper('.productThumbSwiper', {\n  slidesPerView: 4,\n  spaceBetween: 10,\n  watchSlidesVisibility: true\n});\nvar productMainSwiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_1__.Swiper('.productMainSwiper', {\n  thumbs: {\n    swiper: productThumbSwiper\n  }\n});\n\n//# sourceURL=webpack://underscores/./assets/js/single/product.js?");
 
 /***/ }),
 

@@ -20,6 +20,10 @@ $max: 10;
     }
 }
 
+.box-shadow {
+  box-shadow: 0px 0px 20px 0px rgba($dark, .1);
+}
+
 .box-shadow-lg {
   box-shadow: 0px 0px 40px 0px rgba($dark, .1);
 }

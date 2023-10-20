@@ -36,6 +36,33 @@
   }
 }
 
+.tab-link-archive {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: left;
+  position: relative;
+  z-index: 100;
+  &.active {
+    color: $dark;
+    background: $gray2;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    &::before {
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      content: '';
+      background: $gray4;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+  }
+}
+
 .tab-link-cat-color {
   position: relative;
   padding: 8px 12px;
@@ -48,4 +75,29 @@
     color: $light;
     background: $dark;
   }
+}
+
+.tab-link-single {
+  text-align: left;
+  padding: 0;
+  .h4 {
+    color: $gray4;
+  }
+  &:hover {
+    svg path {
+      fill: $secondary;
+    }
+    .h4 {
+      color: $secondary;
+    }
+  }
+}
+
+.cat-tab.active {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.30);
 }

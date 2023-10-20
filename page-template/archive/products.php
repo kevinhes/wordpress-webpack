@@ -31,7 +31,7 @@ $logo_bg = wp_get_attachment_url( 106 ,'full');
               </div>
             </div>
             <!-- img -->
-            <img src="<?php echo $product['cover']['url'] ?>" alt="" class="card-img"> 
+            <img src="<?php echo $product['archive_cover']['url'] ?>" alt="" class="card-img"> 
           </div>
         </div>
       </div>

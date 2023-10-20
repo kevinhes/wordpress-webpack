@@ -24,6 +24,16 @@ $page_taxonomy = $page_info -> taxonomy;
         case 'tax_products':
           get_template_part( 'page-template/archive/products');
           break;
+        case 'tax_coating_knowled':
+        case 'tax_video':
+          get_template_part( 'page-template/archive/archive-template');
+          break;
+        case 'tax_certification':
+          get_template_part( 'page-template/archive/certification');
+          break;
+        case 'tax_news':
+          get_template_part( 'page-template/archive/news');
+          break;
         default:
           if ( have_posts() ) :
             while ( have_posts() ) :

@@ -1,18 +1,40 @@
 import $ from 'jquery';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin( ScrollTrigger );
+
+const catTab = document.querySelector( '.cat-tab' );
+
+gsap.to( catTab, {
+	scrollTrigger: {
+		trigger: '.cat-tab',
+		start: 'top 56',
+		end: 'bottom bottom',
+		toggleActions: 'play none none reverse',
+		// markers: true,
+		onEnter: () => {
+			catTab.classList.add( 'active' );
+		},
+		onLeaveBack: () => {
+			catTab.classList.remove( 'active' );
+		},
+	},
+} );
 
 let caseArr = [];
-const caseList = document.querySelector('.case-list');
-const catSlug = document.querySelector('[data-slug]').dataset.slug;
+const caseList = document.querySelector( '.case-list' );
+const catSlug = document.querySelector( '[data-slug]' ).dataset.slug;
 
-function getPostsArr(paged = 1, cat = 'interior-design') {
+function getPostsArr( paged = 1, cat = 'interior-design' ) {
 	const data = {
 		action: 'get_post_arr_with_cat_and_page',
 		nonce: ajax_link.nonce, //eslint-disable-line
-    post_type: 'type_case',
-    post_num: 10,
-    paged,
-    taxonomy: 'tax_case',
-    cat,
+		post_type: 'type_case',
+		post_num: 12,
+		paged,
+		taxonomy: 'tax_case',
+		cat,
 	};
 
 	$.ajax( {
@@ -20,27 +42,27 @@ function getPostsArr(paged = 1, cat = 'interior-design') {
 		url: ajax_link.ajax_url, //eslint-disable-line
 		data,
 		success: ( res ) => {
-      caseArr = res.post_data;
-      renderCaseList(caseArr)
+			caseArr = res.post_data;
+			renderCaseList( caseArr );
 		},
 	} );
 }
 
-function renderCaseList(data) {
-  console.log(data);
-  let str = '';
-  data.forEach( ( item ) => {
-    str += `
+function renderCaseList( data ) {
+	console.log( data );
+	let str = '';
+	data.forEach( ( item ) => {
+		str += `
     <li class="col-lg-3">
       <div class="card-with-overlay">
-        <img src="${item.thumbnail_url}" alt="" class="w-100 h-100 object-cover">
+        <img src="${ item.thumbnail_url }" alt="" class="w-100 h-100 object-cover">
         <div class="card-overlay py-2 px-3 position-absolute w-100 h-100 top-0 start-0 d-flex align-items-end justify-content-between">
           <div class="w-77">
             <p class="text-samll text-secondary">
               室內案例
             </p>
             <p class="text-light">
-              ${item.title}
+              ${ item.title }
             </p>
           </div>
           <div class="w-21 bg-dark rounded-5px opacity-50 p-1 position-relative z-index-5">
@@ -61,17 +83,17 @@ function renderCaseList(data) {
               </span>
             </a>
           </div>
-          <a href="${item.link}" class="stretched-link"></a>
+          <a href="${ item.link }" class="stretched-link"></a>
         </div>
       </div>
     </li>
-    `
-  } )
-  caseList.innerHTML = str;
+    `;
+	} );
+	caseList.innerHTML = str;
 }
 
 function init() {
-  getPostsArr(1, catSlug );
+	getPostsArr( 1, catSlug );
 }
 
 init();
