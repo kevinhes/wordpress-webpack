@@ -8,6 +8,9 @@
   &::placeholder {
     color: $gray4;
   }
+  &.form-control-area {
+    border-radius: 0;
+  }
 }
 
 .form-select {
@@ -35,4 +38,41 @@
     width: 1px;
     height: calc(100% - 20px);
   }
+}
+
+.contact-form-group {
+  .form-label {
+    display: block;
+  }
+  .form-select {
+    display: block;
+    width: 100%;
+    padding: 8px 20px;
+    background: $light;
+    border: 1px solid $gray4;
+    text-align: left;
+    color: $gray4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23CFAE8E' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+}
+
+.other-form-control {
+  border: none;
+  border-bottom: 1px solid $dark;
+  background: none;
+  // width: auto;
+}
+
+.wpcf7-not-valid-tip {
+  position: absolute;
+}
+
+.wpcf7-list-item {
+  margin: 0;
+}
+
+.wpcf7-spinner {
+  display: none;
 }

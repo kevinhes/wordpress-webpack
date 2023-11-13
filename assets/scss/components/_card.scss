@@ -5,6 +5,19 @@
 
 .card-content {
   width: 485px;
+  transition: all .3s ease-in-out;
+  &:hover {
+    box-shadow: 0px 0px 40px 0px #0000001A;
+    svg {
+      box-shadow: 0px 0px 40px 0px #0000001A;
+      rect {
+        fill: $light;
+      }
+      path {
+        fill:$secondary;
+      }
+    }
+  }
 }
 
 .card-link {
@@ -18,17 +31,6 @@
     }
     path {
       transition: all .3s ease-in-out;
-    }
-  }
-  &:hover {
-    svg {
-      box-shadow: 0px 0px 40px 0px #0000001A;
-      rect {
-        fill: $light;
-      }
-      path {
-        fill:$secondary;
-      }
     }
   }
 }
@@ -105,4 +107,24 @@
 
 .card-site-map {
   height: 314px;
+}
+
+.square-card {
+  height: 295px;
+  border-radius: 5px;
+  overflow: hidden;
+  .overlay {
+    backdrop-filter:blur(5px);
+  }
+  .bg-overlay {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, #FFF 100%);
+  }
+  .link {
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+  }
 }

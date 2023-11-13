@@ -42,12 +42,12 @@ function getPostsArr( cat = 'mineral-color' ) {
 		success: ( res ) => {
 			colorArr = res;
 			renderTileList( colorArr );
-			insertColroStyle( colorArr );
+			insertColorStyle( colorArr );
 		},
 	} );
 }
 
-function insertColroStyle( arr ) {
+function insertColorStyle( arr ) {
 	const colorStyle = document.createElement( 'style' );
 	arr.forEach( ( color ) => {
 		const { hex } = color;
@@ -88,11 +88,12 @@ function popoverInit() {
 		'[data-bs-toggle="popover"]'
 	);
 	const popoverList = [ ...popoverTriggerList ].map( ( popoverTriggerEl ) => {
+		//eslint-disable-line
 		const title = popoverTriggerEl.dataset.title;
 		const rgb = popoverTriggerEl.dataset.rgb;
 		const cymk = popoverTriggerEl.dataset.cymk;
 		const hex = popoverTriggerEl.dataset.hex;
-		new Popover( popoverTriggerEl, {
+		const colorPopover = new Popover( popoverTriggerEl, {
 			content: `
       <div class="tile-color bg-${ hex } me-6"></div>
       <div>
@@ -105,19 +106,34 @@ function popoverInit() {
         </div>
         <div class="mb-2 d-flex align-items-center text-small">
           <p class="btn btn-gray3 w-35 text-center me-2">CMYK</p>
-          <p class="w-65">${ cymk }</p>
+          <p class="w-65">${ rgb }</p>
         </div>
         <div class="mb-2 d-flex align-items-center text-small">
           <p class="btn btn-gray3 w-35 text-center me-2">RGB</p>
-          <p class="w-65">${ rgb }</p>
+          <p class="w-65">${ cymk }</p>
         </div>
-        <a href="" class="btn btn-lg btn-outline-secondary text-center">
+        <a href="https://www.google.com.tw" class="btn btn-lg btn-outline-secondary text-center">
           相關案例
         </a>
       </div>
     `,
 			html: true,
-			trigger: 'focus',
+			trigger: 'manual',
+		} );
+		popoverTriggerEl.addEventListener( 'click', () => {
+			colorPopover.show();
+		} );
+
+		// 在 Popover 内部点击时防止关闭
+		// document.querySelector( '.popover' ).addEventListener( 'click', function( e ) {
+		// 	e.stopPropagation();
+		// } );
+
+		// 点击其他地方关闭 Popover
+		document.addEventListener( 'click', function( e ) {
+			if ( ! popoverTriggerEl.contains( e.target ) ) {
+				colorPopover.hide();
+			}
 		} );
 	} );
 }

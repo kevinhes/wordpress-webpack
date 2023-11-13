@@ -4,8 +4,13 @@ import { Swiper } from 'swiper/bundle';
 const productThumbSwiper = new Swiper('.productThumbSwiper', {
   slidesPerView: 4,
   spaceBetween: 10,
-  watchSlidesVisibility: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  // watchSlidesVisibility: true,
 })
+
 const productMainSwiper = new Swiper('.productMainSwiper', {
     thumbs: {
       swiper: productThumbSwiper
@@ -56,7 +61,7 @@ function popoverInit() {
       </div>
     `,
     html: true,
-    trigger: 'focus'
+    trigger: 'hover'
   })})
 }
 insertColroStyle(color_arr)

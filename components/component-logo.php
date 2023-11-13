@@ -13,20 +13,21 @@
         style="background-image: url(<?php echo $logo[0] ?>)"
       >
       </a>
-      <h1 class="h4 text-light">
+      <h1 class="h4 text-light logo-text">
         <?php bloginfo( 'name' ); ?>
       </h1>
     </div>
   <?php else : ?>
-    <p>
+    <div class="d-flex align-items-center">
       <a
         href="<?php echo esc_url( home_url( '/' ) ); ?>"
         rel="home"
-        class="logo logo-header"
+        class="logo logo-header me-3"
         style="background-image: url(<?php echo $logo[0] ?>)"
       >
-        <?php bloginfo( 'name' ); ?>
+        
       </a>
-    </p>
+      <p class="h4 logo-text"><?php bloginfo( 'name' ); ?></p>
+    </div>
   <?php endif ?>
 </div>

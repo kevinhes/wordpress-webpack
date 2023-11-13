@@ -31,7 +31,7 @@ function getPostsArr( paged = 1, cat = 'interior-design' ) {
 		action: 'get_post_arr_with_cat_and_page',
 		nonce: ajax_link.nonce, //eslint-disable-line
 		post_type: 'type_case',
-		post_num: 12,
+		post_num: -1,
 		paged,
 		taxonomy: 'tax_case',
 		cat,
@@ -42,6 +42,7 @@ function getPostsArr( paged = 1, cat = 'interior-design' ) {
 		url: ajax_link.ajax_url, //eslint-disable-line
 		data,
 		success: ( res ) => {
+      console.log(res);
 			caseArr = res.post_data;
 			renderCaseList( caseArr );
 		},

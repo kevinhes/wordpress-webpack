@@ -9,10 +9,14 @@
     $banner_img = get_field('banner_bg_img', $acf_slug_name);
     $title = $page_info -> name;
     $content = $page_info -> description;
+  } elseif ( is_page() ) {
+    $banner_img = get_field('banner_bg_img');
+    $title = get_the_title();
+    $content = get_the_content();
   }
 ?>
 
-<div class="banner position-relative d-flex align-items-center">
+<div class="banner position-relative d-flex align-items-center bg-gray3">
   <!-- content -->
   <div class="container position-relative z-index-2">
     <div class="row">
@@ -36,7 +40,7 @@
   <div class="pt-15 position-absolute start-0 end-0 h-100 top-0">
     <div class="bg-banner h-100">
       <div class="container h-100">
-        <div class="row bg-gray2 h-100"></div>
+        <div class="row bg-gray3 h-100"></div>
       </div>
     </div>
   </div>

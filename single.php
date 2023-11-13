@@ -26,7 +26,7 @@ $post_type = get_post_type();
           foreach( $terms as $term ) {
             if ( $term -> slug === 'electronic-catalog' ) {
               get_template_part( 'page-template/single/electronic-catalog' );
-            } elseif ( $term -> slug === 'diy-area' ) {
+            } else  {
               get_template_part( 'page-template/single/diy-area' );
             }
           }
@@ -59,8 +59,6 @@ $post_type = get_post_type();
           break;
       }
     ?>
-		<?php
-		?>
 
 	</main><!-- #main -->
 

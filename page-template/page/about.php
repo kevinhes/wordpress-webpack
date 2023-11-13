@@ -66,11 +66,11 @@
         <img src="<?php echo $sub_img_block['main_img']['url'] ?>" class="w-100">
       </div>
     </div>
-    <div class="row position-absolute z-index-2 top-0 start-0 end-0 h-100">
+    <!-- <div class="row position-absolute z-index-2 top-0 start-0 end-0 h-100">
       <div class="offset-lg-4 col-lg-3 inner-top-l inner-sm-top-l">
         <div class="bg-secondary opacity-20 h-100"></div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 
@@ -125,34 +125,34 @@
 </section>
 
 <!-- time line -->
-<section class="pt-20 inner-bottom-l inner-sm-bottom-l">
+<!-- <section class="pt-20 inner-bottom-l inner-sm-bottom-l">
   <div class="container">
     <div class="row">
-      <?php foreach( $product_time_line as $time ) : ?>
+      <?php //foreach( $product_time_line as $time ) : ?>
         <div class="col-lg-4">
           <div class="d-flex flex-column h-100">
             <div class="row position-relative top-5">
               <div class="offset-3 col-6">
-                <img src="<?php echo $time['image']['url'] ?>" alt="time image" class="w-100">
+                <img src="<?php //echo $time['image']['url'] ?>" alt="time image" class="w-100">
               </div>
             </div>
             <div class="box-shadow pt-10 px-5 pb-5 flex-grow-1">
               <h2 class="text-secondary mb-0 text-center">
-                <?php echo $time['time'] ?>
+                <?php //echo $time['time'] ?>
               </h2>
               <h2 class="mb-x1 text-center">
-              <?php echo $time['title'] ?>
+              <?php //echo $time['title'] ?>
               </h2>
               <h4 class="text-center mb-x1">
-                <?php echo $time['subtitle'] ?>
+                <?php //echo $time['subtitle'] ?>
               </h4>
               <p class="text-gray5 mb-0">
-                <?php echo $time['content'] ?>
+                <?php //echo $time['content'] ?>
               </p>
             </div>
           </div>
         </div>
-      <?php endforeach ?>
+      <?php //endforeach ?>
     </div>
   </div>
-</section>
+</section> -->

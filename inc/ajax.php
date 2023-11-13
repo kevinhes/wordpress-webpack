@@ -109,10 +109,10 @@ function get_post_arr_with_cat_and_page(){
   // 組文章陣列
   $args = array(
     'post_type' => $post_type,
-    'posts_per_page' => $post_num,
+    'posts_per_page' => -1,
     'post_status' => 'publish',
     'order' => $post_order, // 降序排序
-    'paged' => $paged,
+    // 'paged' => $paged,
     'tax_query' => array(
       array(
         'taxonomy' => $taxonomy,

@@ -21,6 +21,8 @@ get_header();
       get_template_part( 'page-template/page/about');
     } elseif (is_page('site-map')) {
       get_template_part( 'page-template/page/site-map');
+    } elseif( is_page( 'contact' ) ) {
+      get_template_part( 'page-template/page/contact');
     } else {
       while ( have_posts() ) :
         the_post();

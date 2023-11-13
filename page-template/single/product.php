@@ -30,7 +30,7 @@ $table = get_field('table');
       <div class="swiper productThumbSwiper mb-x1" thumbsSlider="">
         <div class="swiper-wrapper">
           <?php foreach( $product_gallery as $key => $image ) : ?>
-          <div class="swiper-slide">
+          <div class="swiper-slide rounded-5px over-hidden">
             <img src="<?php echo $image['url'] ?>" alt="swiper image <?php echo $key + 1 ?>" class="w-100">
           </div>
           <?php endforeach ?>
@@ -43,14 +43,15 @@ $table = get_field('table');
           <path d="M3.75 10.4375V21.5C3.75 21.6989 3.82902 21.8897 3.96967 22.0303C4.11032 22.171 4.30109 22.25 4.5 22.25H9V15.875C9 15.5766 9.11853 15.2905 9.3295 15.0795C9.54048 14.8685 9.82663 14.75 10.125 14.75H13.875C14.1734 14.75 14.4595 14.8685 14.6705 15.0795C14.8815 15.2905 15 15.5766 15 15.875V22.25H19.5C19.6989 22.25 19.8897 22.171 20.0303 22.0303C20.171 21.8897 20.25 21.6989 20.25 21.5V10.4375" stroke="#CFAE8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M22.5 12.4999L12.5105 2.93741C12.2761 2.68991 11.7281 2.6871 11.4895 2.93741L1.5 12.4999M18.75 8.89054V3.49991H16.5V6.73429" stroke="#CFAE8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span class="h4 mb-0">
+        <span class="h4 mb-0 fw-5">
           <?php echo $product_main_content['series_name'] ?>
         </span>
       </div>
       <h2 class="h1 pb-5 mb-5 border-bottom border-gray3"><?php echo $title ?></h2>
-      <div class="editor-content mb-5">
+      <div class="editor-content mb-5 fw-5">
         <?php the_content() ?>
       </div>
+      <?php if( $product_main_content['green_house_mark_list'] ) : ?>
       <ul class="d-flex list-unstyled pb-2 mb-5">
         <?php foreach( $product_main_content['green_house_mark_list'] as $mark ) : ?>
           <li>
@@ -58,6 +59,7 @@ $table = get_field('table');
           </li>
         <?php endforeach ?>
       </ul>
+      <?php endif ?>
       <p class="mb-5 py-3 px-3 bg-gray2 rounded-5px text-center text-primary">
         #<?php echo $post -> post_title ?>開放線上購買囉！<a class="d-inline text-decoration-underline" href="<?php echo $product_main_content['shopping_site']['url'] ?>"><?php echo $product_main_content['shopping_site']['title'] ?></a>
       </p>
@@ -116,54 +118,52 @@ $table = get_field('table');
       </div>
     <?php endforeach ?>
   </div>
+  
+  <!-- 優勢表格 -->
   <h3 class="pb-3 border-bottom border-gray6 text-center layout-bottom-s">優勢比較</h3>
   <div class="inner-bottom-l inner-sm-bottom-l border-bottom border-gray4 layout-bottom-l layout-sm-bottom-l">
     <?php foreach($table as $key => $table_item) : ?>
-      <?php if( $key === 0 ) : ?>
       <div class="row mb-1x5">
-        <div class="offset-lg-2 col-lg-2"><?php echo $table_item['thead'] ?></div>
-        <div class="col-lg-3">
-          <div class="bg-primary bg-opacity-10 rounded-5px py-3 text-center px-3">
+        <div class="offset-lg-2 col-lg-2 h-inherit">
+          <?php
+            echo $key !==0 ? '<div class="rounded-5px bg-gray2 p-3 h-100">' : '';
+            echo $table_item['thead'];
+            echo $key !==0 ? '</div>' : '';
+          ?>
+        </div>
+        <div class="col-lg-3 h-inherit">
+          <div class="bg-primary bg-opacity-10 rounded-5px py-3 text-center px-3 h-100">
+            <?php echo $key === 0 ? '<h4 class="mb-0">' : '' ?>
             <?php echo $table_item['keim'] ?>
+            <?php echo $key === 0 ? '</h4>' : '' ?>
           </div>
         </div>
-        <div class="col-lg-3">
-          <div class="bg-gray6 bg-opacity-10 rounded-5px text-center py-3 px-3">
+        <div class="col-lg-3 h-inherit">
+          <div class="bg-gray6 bg-opacity-10 rounded-5px text-center py-3 px-3 h-100">
+            <?php echo $key === 0 ? '<h4 class="mb-0">' : '' ?>
             <?php echo $table_item['normal'] ?>
+            <?php echo $key === 0 ? '</h4>' : '' ?>
           </div>
         </div>
       </div>
-      <?php else : ?>
-      <div class="row mb-1x5">
-        <div class="offset-lg-2 col-lg-2">
-          <div class="rounded-5px bg-gray2 p-3">
-            <?php echo $table_item['thead'] ?>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="bg-primary bg-opacity-10 rounded-5px py-3 text-center px-3">
-            <?php echo $table_item['keim'] ?>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="bg-gray6 bg-opacity-10 rounded-5px text-center py-3 px-3">
-            <?php echo $table_item['normal'] ?>
-          </div>
-        </div>
-      </div>
-      <?php endif ?>
     <?php endforeach ?>
   </div>
+
+  <!-- 相關產品 -->
   <div class="row layout-bottom-s layout-bottom-s">
     <?php $products_arr = output_post('type_products', -1); ?>
     <?php foreach($products_arr as $product) : ?>
       <div class="col-lg-6 mb-10">
-        <a class="position-relative rounded-5px overflow-hidden" href="<?php echo $product['link'] ?>">
+        <a class="position-relative rounded-5px overflow-hidden" href="<?php echo $product['id'] ===  $post -> ID ? get_term_link('mineral-color', 'tax_mineral_color') : $product['link'] ?>">
           <div class="position-absolute w-100 h-100 top-0 start-0">
             <img src="<?php echo $product['sm_banner_img']['url'] ?>" alt="" class="w-100 h-100 object-cover">
           </div>
           <div class="blur position-relative z-index-1 p-8 d-flex justify-content-between align-items-center">
-            <h2 class="text-dark"><?php echo $product['title'] ?></h2>
+            <?php if ( $product['id'] === $post -> ID ) : ?>
+              <h2 class="text-dark">礦物色彩</h2>
+            <?php else : ?>
+              <h2 class="text-dark"><?php echo $product['title'] ?></h2>
+            <?php endif ?>
             <div>
               <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
                 <rect x="40.5" width="40" height="40" rx="20" transform="rotate(90 40.5 0)" fill="#CFAE8E"/>

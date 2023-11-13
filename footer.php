@@ -39,7 +39,10 @@ $logo_footer = wp_get_attachment_url(409);
             <p class="mb-5"><?php echo $item['address'] ?></p>
             <p class="mb-5"><?php echo $item['tel'] ?></p>
             <div class="d-flex justify-content-center">
-              <a href="" class="btn btn-lg btn-outline-light">
+              <a
+                href="<?php echo $item['contact']['url'] ?>"
+                class="btn btn-lg btn-outline-light"
+                target="_blank">
                 聯絡我們
               </a>
             </div>

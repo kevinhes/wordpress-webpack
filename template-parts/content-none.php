@@ -11,7 +11,7 @@
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'design_hu_webpack' ); ?></h1>
+		<h1 class="page-title"><?php esc_html_e( '目前尚無資料', 'design_hu_webpack' ); ?></h1>
 	</header><!-- .page-header -->
 
 	<div class="page-content">
@@ -41,7 +41,7 @@
 		else :
 			?>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'design_hu_webpack' ); ?></p>
+			<p><?php esc_html_e( '這似乎不是我們能找到的內容。或許搜索能提供幫助。', 'design_hu_webpack' ); ?></p>
 			<?php
 			get_search_form();
 

@@ -113,3 +113,42 @@
 .caseSwiper-btn-next {
   right: -55px;
 }
+
+.productMainSwiper {
+  padding-top: 135px;
+  .swiper-slide {
+    height: 343px;
+    border-radius: 5px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.productThumbSwiper {
+  .swiper-slide {
+    height: 145px;
+    border-radius: 5px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+    content: '';
+  }
+  .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+    content: '';
+  }
+  .swiper-button-next {
+    right: 0;
+  }
+  .swiper-button-prev {
+    left: 0;
+  }
+}

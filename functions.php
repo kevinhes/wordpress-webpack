@@ -216,3 +216,5 @@ function build_menu_array($menu_items, $parent = 0) {
 
   return $branch;
 }
+
+add_filter('wpcf7_autop_or_not', '__return_false');

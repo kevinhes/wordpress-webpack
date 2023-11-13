@@ -8,7 +8,7 @@ $logo_bg = wp_get_attachment_url( 106 ,'full');
 <?php get_template_part('components/component-banner') ?>
 <!-- banner -->
 
-<section class="bg-gray2 inner-y-l inner-sm-y-l position-relative">
+<section class="bg-gray3 inner-y-l inner-sm-y-l position-relative">
   <div class="position-relative z-index-2">
     <div class="container position-relative z-index-3">
       <?php foreach( $products_arr as $key => $product ) : ?>
@@ -17,10 +17,10 @@ $logo_bg = wp_get_attachment_url( 106 ,'full');
           <div class="position-relative pe-x1 w-100 d-flex justify-content-end">
             <!-- card content -->
             <div class="card-content rounded-5px position-absolute top-50 translate-middle-y bg-gray2 p-10 start-0">
-              <div class="d-flex">
+              <div class="d-flex justify-content-between">
                 <div class="pe-5">
                   <h2 class="mb-5"><?php echo $product['title'] ?></h2>
-                  <h4 class="text-gray4"><?php echo $product['excerpt'] ?></h4>
+                  <h4 class="text-gray4 mb-0"><?php echo $product['excerpt'] ?></h4>
                 </div>
                 <a class="card-link d-flex align-items-center" href="<?php echo $product['link'] ?>">
                   <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">

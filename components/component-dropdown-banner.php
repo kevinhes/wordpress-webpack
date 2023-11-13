@@ -5,7 +5,7 @@
   $title = '';
   $excerpt = '';
   $post_type = get_post_type();
-  $posts_arr = '';
+  $posts_arr = [];
   if( is_archive() ) {
     $page_info = get_queried_object();
     $about_page = get_page_by_path('about');
@@ -28,16 +28,17 @@
   if (is_page('about') || is_page('keim-stories') || is_page('env-protect') || is_page('site-map')) {
     $about_page = get_page_by_path('about');
     $child_pages = get_pages(array('child_of' => $about_page -> ID));
-    $posts_arr = $child_pages;
+    $certification = get_term_by('slug', 'certification', 'tax_certification');
+    $news = get_term_by('slug', 'last-news', 'tax_news');
+    $posts_arr[] = $child_pages[0];
+    $posts_arr[] = $child_pages[1];
+    $posts_arr[] = $certification;
+    $posts_arr[] = $child_pages[2];
+    $posts_arr[] = $news;
     $banner_img = get_field('cover');
     $title = get_the_title();
 
     // $certification = get_term( 48, 'type_certification' );
-    $certification = get_term_by('slug', 'certification', 'tax_certification');
-    $news = get_term_by('slug', 'last-news', 'tax_news');
-
-    $posts_arr[] = $certification;
-    $posts_arr[] = $news;
 
     wp_reset_query();
   } elseif ( is_single() ) {
@@ -100,4 +101,5 @@
       <img src="<?php echo $banner_img['url'] ?>" alt="banner image" class="full-img-setting">
     <?php endif ?>
   </div>
+  <div class="bg-overlay"></div>
 </div>
