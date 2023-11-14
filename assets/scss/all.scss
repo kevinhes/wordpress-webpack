@@ -1,6 +1,7 @@
 @import './vendor/bootstrap';
 @import '../../node_modules/swiper/swiper-bundle.css';
 @import '../../node_modules/aos/dist/aos.css';
+@import '../../node_modules/sweetalert2/src/sweetalert2.scss';
 
 // base
 @import './base/base';
@@ -23,6 +24,7 @@
 @import './components/navbar';
 @import './components/sassyshare';
 @import './components/menu';
+@import './components/sweatalert';
 
 
 //layout
@@ -35,6 +37,7 @@
 //page
 @import './page/about';
 @import './page/index';
+@import './page/thank';
 @import './page/404';
 
 // helpers

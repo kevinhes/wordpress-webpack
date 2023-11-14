@@ -47,6 +47,12 @@ function design_hu_webpack_scripts() {
       case 'site-map':
         wp_enqueue_script( 'about-script', get_template_directory_uri() . '/dist/about.js', array(), _S_VERSION, true );
         break;
+      case 'question-box':
+        wp_enqueue_script( 'qa-script', get_template_directory_uri() . '/dist/qabox.js', array(), _S_VERSION, true );
+        break;
+      case 'contact':
+        wp_enqueue_script( 'contact-script', get_template_directory_uri() . '/dist/contact.js', array(), _S_VERSION, true );
+        break;
     }
   }
   

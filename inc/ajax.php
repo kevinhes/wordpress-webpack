@@ -7,6 +7,9 @@ function my_enqueue() {
   wp_localize_script( 'case-script', 'ajax_link', array(
 		'ajax_url' => admin_url( 'admin-ajax.php' ),
 	) );
+  wp_localize_script( 'qa-script', 'ajax_link', array(
+		'ajax_url' => admin_url( 'admin-ajax.php' ),
+	) );
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueue' );
 
@@ -193,3 +196,31 @@ function get_post_arr_with_cat_and_page(){
 	wp_die();
 };
 
+add_action('wp_ajax_get_post_arr_with_id','get_post_arr_with_id'); 
+add_action('wp_ajax_nopriv_get_post_arr_with_id','get_post_arr_with_id');
+
+function get_post_arr_with_id(){
+  
+	// 接收前端傳來的資料
+	$posts_id = $_POST['posts_id'];
+
+  // 資料初始化
+  $post_arr = array();
+  // 資料整理
+  foreach( $posts_id as $post_id ) {
+    $post_arr[] = array(
+      'id' => $post_id,
+      'title' => get_the_title($post_id),
+      'thumbnail_url' => get_the_post_thumbnail_url($post_id),
+    );
+  
+  }
+
+	// 跟後台要資料
+  // $post_arr[] = $posts_id;
+  wp_reset_postdata();
+	
+	// 資料送出
+	wp_send_json($post_arr);
+	wp_die();
+};

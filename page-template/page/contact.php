@@ -1,3 +1,9 @@
+<?php 
+  $thank_page = get_page_by_path('thank');
+  $thank_page_link = get_permalink($thank_page);
+  wp_localize_script( 'contact-script', 'thank_link', $thank_page_link );
+?>
+
 <?php
 $address_list = get_field('address_list', 'option');
 ?>

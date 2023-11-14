@@ -1,0 +1,1 @@
+document.addEventListener("wpcf7mailsent",(function(n){location=thank_link}),!1);

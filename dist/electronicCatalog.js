@@ -1,14 +1,1 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	
-/******/ 	
-/******/ })()
-;
+(()=>{var t=document.querySelectorAll(".editor-content h3"),e=document.querySelector(".post-list"),n=[],a=0;t.forEach((function(t,e){t.setAttribute("id","anchor-".concat(a)),n.push({title:t.textContent,index:a,sublist:[]}),a++;for(var c=t.nextElementSibling,o=[];c&&"H3"!==c.tagName;)"H4"===c.tagName&&(c.setAttribute("id","anchor-".concat(a)),o.push(c),n[e].sublist.push({title:c.textContent,index:a}),a++),c=c.nextElementSibling})),n.forEach((function(t){var n=document.createElement("li");n.classList.add("mb-2");var a=document.createElement("a");if(a.href="#anchor-".concat(t.index),a.className="text-dark",a.textContent=t.title,n.appendChild(a),t.sublist.length>0){var c=document.createElement("ol");c.classList.add("sub-menu"),t.sublist.forEach((function(t){var e=document.createElement("li");e.className="ps-3";var n=document.createElement("a");n.href="#anchor-".concat(t.index),n.className="text-dark",n.textContent=t.title,e.appendChild(n),c.appendChild(e)})),n.appendChild(c)}e.appendChild(n)})),document.querySelector('[type="button"].item-link').addEventListener("click",(function(){navigator.clipboard.writeText(window.location.href).then((function(){alert("URL copied to clipboard!")})).catch((function(t){console.error("Could not copy URL: ",t)}))}))})();

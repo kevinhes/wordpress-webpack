@@ -12,6 +12,8 @@ module.exports = { // eslint-disable-line
     about: './assets/js/page/about.js',
     dropdownbanner: './assets/js/components/dropdownbanner.js',
     home: './assets/js/page/home.js',
+    qabox: './assets/js/page/qabox.js',
+    contact: './assets/js/page/contact.js',
 	},
 	output: {
 		filename: '[name].js',

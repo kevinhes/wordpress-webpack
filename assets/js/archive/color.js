@@ -74,7 +74,8 @@ function renderTileList( arr ) {
         data-title="${ color.title }"
         data-rgb="${ color.rgb }"
         data-cymk="${ color.cmyk }"
-        data-hex="${ color.hex }">
+        data-hex="${ color.hex }"
+        data-colorid="${ color.id }">
       </button>
     </li>
     `;
@@ -90,6 +91,7 @@ function popoverInit() {
 	const popoverList = [ ...popoverTriggerList ].map( ( popoverTriggerEl ) => {
 		//eslint-disable-line
 		const title = popoverTriggerEl.dataset.title;
+    const postId = popoverTriggerEl.dataset.colorid;
 		const rgb = popoverTriggerEl.dataset.rgb;
 		const cymk = popoverTriggerEl.dataset.cymk;
 		const hex = popoverTriggerEl.dataset.hex;
@@ -99,9 +101,10 @@ function popoverInit() {
       <div>
         <div class="d-flex align-items-center mb-2">
           <h2 class="me-2 mb-0">${ title }</h2>
-          <a href="#" class="btn btn-y-center btn-secondary">
+          <a href="#" class="addQaBtn btn btn-y-center btn-secondary">
             <img src="${ search_icon }" alt="info icon" class="me-2"/>
             <span>加入詢問箱</span>
+            <span class="postid d-none">${postId}</span>
           </a>
         </div>
         <div class="mb-2 d-flex align-items-center text-small">
@@ -120,14 +123,35 @@ function popoverInit() {
 			html: true,
 			trigger: 'manual',
 		} );
+
 		popoverTriggerEl.addEventListener( 'click', () => {
 			colorPopover.show();
+      const addQaBtn = document.querySelector('.addQaBtn');
+      addQaBtn.addEventListener('click', (e) => {
+        console.log(1234);
+        e.preventDefault();
+        const postId = addQaBtn.querySelector('.postid').textContent;
+        let postIds = getCookie("postIds");
+        if (postIds) {
+          postIds = postIds.split(','); // 如果 Cookie 存在，將字符串轉換成數組
+        } else {
+          postIds = [];
+        }
+  
+        console.log(postIds);
+  
+        if (!postIds.includes(postId)) {
+          // 添加新的 postId 到數組
+          postIds.push(postId);
+  
+          let expires = new Date();
+          expires.setTime(expires.getTime() + (24 * 60 * 60 * 1000)); // 當前時間加上 24 小時
+  
+          // 更新 Cookie，包括過期時間
+          document.cookie = "postIds=" + postIds.join(',') + "; expires=" + expires.toUTCString() + "; path=/";
+        }
+      })
 		} );
-
-		// 在 Popover 内部点击时防止关闭
-		// document.querySelector( '.popover' ).addEventListener( 'click', function( e ) {
-		// 	e.stopPropagation();
-		// } );
 
 		// 点击其他地方关闭 Popover
 		document.addEventListener( 'click', function( e ) {
@@ -136,6 +160,17 @@ function popoverInit() {
 			}
 		} );
 	} );
+}
+
+function getCookie(name) {
+  let cookies = document.cookie.split('; ');
+  for (let i = 0; i < cookies.length; i++) {
+    let parts = cookies[i].split('=');
+    if (parts[0] == name) {
+      return parts[1];
+    }
+  }
+  return "";
 }
 
 function init() {
