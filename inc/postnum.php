@@ -8,6 +8,8 @@ function my_custom_posts_per_page( $query ) {
         $query->set( 'posts_per_page', 4 );
       } elseif ( $query->is_tax( 'tax_certification') ) {
         $query->set( 'posts_per_page', 8 );
+      } elseif ( $query->is_tax( 'tax_news') ) {
+        $query->set( 'posts_per_page', 9 );
       }
     }
   }

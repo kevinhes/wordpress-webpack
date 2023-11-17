@@ -20,9 +20,9 @@
     $posts_arr[] = $news;
     wp_reset_query();
     if ( $page_info -> slug === 'certification' ) {
-      $banner_img = wp_get_attachment_url(299);
+		$banner_img = wp_get_attachment_url(2990);
     } elseif ($page_info -> slug === 'last-news') {
-      $banner_img = wp_get_attachment_url(320);
+      $banner_img = wp_get_attachment_url(3437);
     }
   }
   if (is_page('about') || is_page('keim-stories') || is_page('env-protect') || is_page('site-map')) {
@@ -49,7 +49,6 @@
     $excerpt = get_the_excerpt();
   }
 ?>
-
 
 <div class="banner-m position-relative d-flex align-items-center">
   <div class="container position-relative z-index-1">
