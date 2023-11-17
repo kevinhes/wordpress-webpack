@@ -11,6 +11,8 @@ function my_custom_posts_per_page( $query ) {
       } elseif ( $query->is_tax( 'tax_news') ) {
         $query->set( 'posts_per_page', 9 );
       }
+    } elseif ( is_search() ) {
+      $query->set( 'posts_per_page', -1 );
     }
   }
 }

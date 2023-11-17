@@ -3,8 +3,8 @@ import { Swiper } from 'swiper/bundle';
 const caseSwiper = new Swiper( '.caseSwiper', {
 	slidesPerView: 4,
 	navigation: {
-		nextEl: ".swiper-button-next",
-		prevEl: ".swiper-button-prev",
+		nextEl: ".caseSwiper-btn-next",
+		prevEl: ".caseSwiper-btn-prev",
 	},
 } );
 

@@ -10,12 +10,14 @@ $sharing_section = get_field('sharing_section');
 $slogan = get_field('slogan');
 ?>
 
+<!-- bnaaer -->
 <div class="banner position-relative">
   <div class="position-absolute w-100 h-100 top-0 start-0">
     <img src="<?php echo $banner_group['banner']['url'] ?>" alt="home banner image" class="w-100 h-100 object-cover">
   </div>
 </div>
 
+<!-- news 跑馬燈 -->
 <section class="py-2 d-flex justify-content-center">
   <a href="<?php echo get_permalink($news_post) ?>" class="d-flex text-dark align-items-center">
     <span class="me-6">
@@ -33,6 +35,8 @@ $slogan = get_field('slogan');
     </svg>
   </a>
 </section>
+
+<!-- case swiper -->
 <section class="bg-primary-dark inner-y-l">
   <h2 class="h1 text-center text-light mb-5">
     <?php echo $case_section['title'] ?>
@@ -91,6 +95,7 @@ $slogan = get_field('slogan');
   </div>
 </section>
 
+<!-- review -->
 <section class="inner-top-s inner-sm-top-s pb-5 bg-gray2 position-relative">
   <div class="container position-relative z-index-1">
     <h2 class="text-center mb-5">

@@ -20527,6 +20527,16 @@ div:where(.swal2-icon) {
   }
 }
 
+.search-result .search-item {
+  width: 23%;
+}
+.search-result .search-item-case {
+  height: 295px;
+}
+.search-result .search-item-product .search-item-product-img {
+  height: 165px;
+}
+
 .site-header {
   position: fixed;
   top: 0;
@@ -20548,6 +20558,20 @@ div:where(.swal2-icon) {
 .logo-header {
   width: 40px;
   height: 40px;
+}
+
+.search-sec {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  background: white;
+  top: 0;
+  left: 0;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+.search-sec.active {
+  transform: translateY(0);
 }
 
 .address-list .list-item {

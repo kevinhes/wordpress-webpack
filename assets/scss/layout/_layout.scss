@@ -66,3 +66,16 @@ $space-sizes: (
   };
 };
 
+.search-result {
+  .search-item {
+    width: 23%;
+  }
+  .search-item-case {
+    height: 295px;
+  }
+  .search-item-product {
+    .search-item-product-img {
+      height: 165px;
+    }
+  }
+}

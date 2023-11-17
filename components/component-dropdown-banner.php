@@ -21,7 +21,7 @@
     wp_reset_query();
     if ( $page_info -> slug === 'certification' ) {
 		$banner_img = wp_get_attachment_url(2990);
-    } elseif ($page_info -> slug === 'last-news') {
+    } elseif ($page_info -> taxonomy === 'tax_news') {
       $banner_img = wp_get_attachment_url(3437);
     }
   }

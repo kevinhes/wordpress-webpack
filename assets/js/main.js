@@ -42,3 +42,18 @@ gsap.fromTo( siteHeader,
 			},
 		},
 	} );
+
+  const searchTrigger  = document.querySelector( '.search-trigger' );
+  const searchSec = document.querySelector( '.search-sec' );
+  const closeSearchBtn = document.querySelector( '.close-search-btn' );
+  searchTrigger.addEventListener( 'click', () => {
+    if (!searchSec.classList.contains( 'active' )) {
+      searchSec.classList.add( 'active' );
+    }
+  } )
+
+  closeSearchBtn.addEventListener( 'click', () => {
+    if (searchSec.classList.contains( 'active' )) {
+      searchSec.classList.remove( 'active' );
+    }
+  } )

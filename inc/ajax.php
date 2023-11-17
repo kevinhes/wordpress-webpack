@@ -224,3 +224,78 @@ function get_post_arr_with_id(){
 	wp_send_json($post_arr);
 	wp_die();
 };
+
+function search_color_arr(){
+
+	// 接收前端傳來的資料
+  $keyword = isset($_POST['keyword']) && !empty($_POST['keyword']) ? $_POST['keyword'] : 'default_keyword_value';
+  // $taxonomy = $_POST['taxonomy'];
+  // $cat = $_POST['cat'];
+
+  // 組文章陣列
+  $args = array(
+    'post_type' => 'type_mineral_color',
+    'posts_per_page' => -1,
+    'post_status' => 'publish',
+    'tax_query' => array(
+      array(
+        'taxonomy' => 'tax_mineral_color',
+        'field' => 'slug',
+        'terms' => 'mineral-color',
+      ),
+    ),
+  );
+
+  // 資料初始化
+  $post_arr = array();
+
+	// 跟後台要資料
+  $query = new WP_Query($args);
+
+  if ($query->have_posts()) {
+    while ($query->have_posts()) {
+      $query->the_post();
+      $title = get_the_title();
+      $thumbnail_url = get_the_post_thumbnail_url();
+      $link = get_permalink();
+      $excerpt = get_the_excerpt();
+      $fields = get_fields();
+
+      // Create a new array to store the post data
+      $current_post = array(
+          'id' => get_the_ID(),
+          'date' => get_the_date(),
+          'content' => get_the_content(),
+          'title' => $title,
+          'thumbnail_url' => $thumbnail_url,
+          'link' => $link,
+          'excerpt' => $excerpt,
+      );
+
+        // If there are ACF fields, add them to the current post array
+        if ($fields) {
+            foreach ($fields as $field_name => $value) {
+                $current_post[$field_name] = $value;
+            }
+        }
+
+        // Add the current post array to the main post array
+        $post_arr[] = $current_post;
+    }
+  }
+
+  $filtered_post_arr = array_filter($post_arr, 
+    function($post) use ($keyword) {
+      return strpos($post['title'], $keyword) !== false;
+    }
+  );
+
+  wp_reset_postdata();
+	
+	// 資料送出
+	wp_send_json($filtered_post_arr);
+	wp_die();
+};
+
+add_action('wp_ajax_search_color_arr','search_color_arr'); 
+add_action('wp_ajax_nopriv_search_color_arr','search_color_arr');

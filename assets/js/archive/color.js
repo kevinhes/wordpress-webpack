@@ -2,9 +2,10 @@ import $ from 'jquery';
 import { Popover } from 'bootstrap';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
-function tabChage() {
-	const tabList = document.querySelectorAll( '.tab-link' );
+const searchInput = document.querySelector('.search-color-input');
+const tabList = document.querySelectorAll( '.tab-link' );
 
+function tabChage() {
 	if ( tabList ) {
 		tabList.forEach( ( tab ) => {
 			tab.addEventListener( 'click', function( e ) {
@@ -42,6 +43,67 @@ function getPostsArr( cat = 'mineral-color' ) {
 		data,
 		success: ( res ) => {
 			colorArr = res;
+			renderTileList( colorArr );
+			insertColorStyle( colorArr );
+		},
+	} );
+}
+
+// search eventlistener
+function searchEvent() {
+  const searchBtn = document.querySelector('.search-color-btn');
+  searchInput.addEventListener('keydown', (e) => {
+    if ( e.key === 'Enter' ) {
+      const keyword = searchInput.value;
+      e.preventDefault();
+      searchColorArr(keyword);
+      tabList.forEach( ( item ) => {
+        item.classList.remove( 'active' );
+      } );
+    }
+  });
+  searchBtn.addEventListener('click', (e) => {
+    const keyword = searchInput.value;
+    searchColorArr(keyword);
+    tabList.forEach( ( item ) => {
+      item.classList.remove( 'active' );
+    } );
+  });
+}
+
+// search reset
+function searchReset() {
+  const searchResetBtn = document.querySelector('.search-color-reset');
+  searchResetBtn.addEventListener('click', (e) => {
+    searchInput.value = '';
+    tabList.forEach( ( item ) => {
+      item.classList.remove( 'active' );
+    } );
+    tabList.forEach( ( item ) => {
+      if ( item.dataset.cat === 'mineral-color' ) {
+        item.classList.add( 'active' );
+      }
+    } );
+    getPostsArr();
+  })
+}
+
+// search function
+function searchColorArr( keyword ) {
+	const data = {
+		action: 'search_color_arr',
+		nonce: ajax_link.nonce, //eslint-disable-line
+    keyword,
+	};
+
+	$.ajax( {
+		type: 'POST',
+		url: ajax_link.ajax_url, //eslint-disable-line
+		data,
+		success: ( res ) => {
+      console.log(res);
+			colorArr = res;
+      colorArr = Object.values(colorArr);
 			renderTileList( colorArr );
 			insertColorStyle( colorArr );
 		},
@@ -199,6 +261,8 @@ function getCookie( name ) {
 
 function init() {
 	tabChage();
+  searchEvent();
+  searchReset();
 	getPostsArr();
 }
 
